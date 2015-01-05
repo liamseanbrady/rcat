@@ -1,2 +1,7 @@
 #! /usr/bin/env ruby
 
+require_relative "../lib/rcat"
+
+begin
+  RCat::Application.new(ARGV).run
+end
