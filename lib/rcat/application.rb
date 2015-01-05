@@ -16,7 +16,16 @@ module RCat
     end
 
     def parse_options(argv)
-      # ignore for now
+      params = {}
+      parser = OptionParser.new
+
+      parser.on("-n") { params[:line_numbering_style] ||= :all_lines }
+      parser.on("-b") { params[:line_numbering_style] = :significant_lines }
+      parser.on("-s") { params[:squeeze_extra_newlines] = true }
+
+      files = parser.parse(argv)
+
+      [params, files]
     end
   end
 end
