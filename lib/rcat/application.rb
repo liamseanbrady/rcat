@@ -19,9 +19,10 @@ module RCat
       params = {}
       parser = OptionParser.new
 
-      parser.on("-n") { params[:line_numbering_style] ||= :all_lines }
-      parser.on("-b") { params[:line_numbering_style] = :significant_lines }
-      parser.on("-s") { params[:squeeze_extra_newlines] = true }
+      parser.banner = "Welcome to rcat - a Ruby implementation of Unix's cat utility\n\n"
+      parser.on("-n", "Include all lines") { params[:line_numbering_style] ||= :all_lines }
+      parser.on("-b", "Number only non-blank lines") { params[:line_numbering_style] = :significant_lines }
+      parser.on("-s", "Remove multiple blank lines") { params[:squeeze_extra_newlines] = true }
 
       files = parser.parse(argv)
 
