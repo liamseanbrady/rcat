@@ -33,9 +33,12 @@ module RCat
           increment_line_number
         end
       else
-        if squeeze_extra_newlines && current_line_is_blank
-          lines.next while lines.peek.chomp.empty?
-        end
+        print_unlabeled_line(current_line)
+        increment_line_number
+      end
+
+      if squeeze_extra_newlines && current_line_is_blank
+        lines.next while lines.peek.chomp.empty?
       end
     end
 
